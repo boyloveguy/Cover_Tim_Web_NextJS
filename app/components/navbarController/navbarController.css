@@ -1,0 +1,38 @@
+.navbarController {
+    animation: goUp ease-out 1s;
+
+}
+
+@keyframes goUp {
+    0% {
+        bottom: 0;
+    }
+
+    100% {
+        bottom: 20px;
+    }
+}
+
+.navbarController_home {
+
+}
+
+@keyframes scaleRowUP {
+    0% {
+        max-width: 20%;
+    }
+
+    100% {
+        max-width: 100%;
+    }
+}
+
+@keyframes scaleRowDown {
+    0% {
+        max-width: 100%;
+    }
+
+    100% {
+        max-width: 45%;
+    }
+}

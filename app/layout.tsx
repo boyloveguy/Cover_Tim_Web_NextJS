@@ -1,7 +1,9 @@
+'use client'
 import './globals.css'
 import { Inter } from 'next/font/google'
-
+import Home from './pages/home'
 const inter = Inter({ subsets: ['latin'] })
+import React from 'react'
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,9 +15,62 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const [dataStateA, setDataA] = React.useState<any>([])
+  const [dataStateB, setDataB] = React.useState<any>([])
+
+  const pOne = React.useRef()
+  const pTwo = React.useRef()
+
+  const a = 71
+  const dataA = [
+    { lb: 'a', value: '7'},
+    { lb: 'b', value: '1'},
+    { lb: 'c', value: '4'},
+    { lb: 'd', value: '9'},
+  ]
+  const b = 692
+  const dataB = [
+    { lb: 'A', value: '6'},
+    { lb: 'B', value: '9'},
+    { lb: 'C', value: '2'},
+    { lb: 'D', value: '7'},
+  ]
+
+  const handleOne = () => {
+    const convertA = a.toString()
+    const splitA = convertA.split('')
+    splitA.map((number)=>{
+      dataA.map((data: any)=>{
+        if(number === data.value){
+          setDataA((prev: any)=>[...prev, data.lb])
+        }
+      })
+    })
+  }
+  
+  const handleTwo = () => {
+    const convertB = b.toString()
+    const splitB = convertB.split('')
+    splitB.map((number)=>{
+      dataB.map((data)=>{
+        if(number === data.value){
+          setDataB((prev: any)=>[...prev, data.lb])
+        }
+      })
+    })
+  }
+  
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        {/* <Home></Home> */}
+        <p id='p1' >{dataStateA.map((a: string)=>a)}</p>
+        <p id='p2'>{dataStateB.map((b: string)=>b)}</p>
+        <button onClick={handleOne}>Click One</button>
+        <button onClick={handleTwo}>Click Two</button>
+      </body>
     </html>
   )
 }
